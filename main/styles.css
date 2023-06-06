@@ -41,3 +41,17 @@ footer{
 .nav-link{
     text-decoration: underline;
 }
+div>p{
+    width: 14em;
+    color: rgb(214, 210, 210);
+    background-size: cover;
+    margin: auto;
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: 500;
+}
+.hr2{
+    border: 2px solid rgb(194, 194, 194);
+    width: 25em;
+    margin: 4em auto 2em auto;
+}
