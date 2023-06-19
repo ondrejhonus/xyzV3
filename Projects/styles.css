@@ -36,7 +36,6 @@ footer{
     border: solid 5px rgb(23, 23, 27);
     border-radius: 5%;
     background-color: rgb(54, 56, 65);
-    animation: pulse 5s infinite;
     transition: transform 0.2s ease-in-out;
 }
 .gallery-item:hover{
