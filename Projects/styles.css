@@ -44,7 +44,7 @@ footer{
 img{
     border-radius: 7px;
     text-align: center;
-
+    width: 92%;
 }
 .row {
     --bs-gutter-x: 0;
