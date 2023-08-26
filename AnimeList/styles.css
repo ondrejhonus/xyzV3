@@ -4,7 +4,9 @@ body {
     animation-fill-mode: forwards;
     text-align: center !important;
 }
-
+.bg-dark{
+    background-color: rgb(0, 0, 0) !important;
+}
 @key_blank fadeInAnimation {
     0% {
         opacity: 0;
