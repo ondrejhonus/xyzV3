@@ -3,9 +3,7 @@ body {
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
     text-align: center !important;
-}
-.bg-dark{
-    background-color: rgb(0, 0, 0) !important;
+    background-color: black;
 }
 @key_blank fadeInAnimation {
     0% {
@@ -15,6 +13,12 @@ body {
     100% {
         opacity: 1;
     }
+}
+html{
+    background-color: black;
+}
+.bg-dark{
+    background-color: rgb(0, 0, 0) !important;
 }
 img:hover {
     transform: scale(1.1);
@@ -60,7 +64,7 @@ footer{
 
 .gallery-item {
     position: relative;
-    width: 25%;
+    width: 27%;
     margin: 10px;
     overflow: hidden;
     border-radius: 5px;
