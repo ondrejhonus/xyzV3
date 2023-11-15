@@ -2,6 +2,7 @@ let audioContext;
 let buffer;
 let source;
 let intervalId;
+let tickCount = 0;
 
 function startMetronome() {
     let bpmInput = document.getElementById('bpmInput');
@@ -18,7 +19,7 @@ function startMetronome() {
 }
 
 function loadTickSound() {
-    // You may need to adjust the path to your tick sound file
+    // Adjust the path to your tick sound file in the media directory
     let tickSoundUrl = 'media/metronome.wav';
 
     fetch(tickSoundUrl)
@@ -37,6 +38,13 @@ function playMetronome(bpm) {
         source = audioContext.createBufferSource();
         source.buffer = buffer;
         source.connect(audioContext.destination);
+
+        // Adjust the pitch every 4th tick
+        if (tickCount % 4 === 0) {
+            let pitchShift = 2; // You can adjust this value to change the pitch shift
+            source.detune.value = pitchShift;
+        }
+
         source.start();
 
         // You may want to adjust the duration of the tick sound
@@ -44,6 +52,9 @@ function playMetronome(bpm) {
 
         // Stop the source node after the tick duration
         source.stop(audioContext.currentTime + tickDuration);
+        
+        // Increment the tick count
+        tickCount++;
     }, interval);
 }
 
