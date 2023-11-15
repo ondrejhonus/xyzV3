@@ -1,5 +1,7 @@
 let audioContext;
-let oscillator;
+let buffer;
+let source;
+let intervalId;
 
 function startMetronome() {
     let bpmInput = document.getElementById('bpmInput');
@@ -11,27 +13,47 @@ function startMetronome() {
     }
 
     audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    loadTickSound();
     playMetronome(bpm);
+}
+
+function loadTickSound() {
+    // You may need to adjust the path to your tick sound file
+    let tickSoundUrl = 'media/metronome.wav';
+
+    fetch(tickSoundUrl)
+        .then(response => response.arrayBuffer())
+        .then(data => audioContext.decodeAudioData(data))
+        .then(decodedBuffer => {
+            buffer = decodedBuffer;
+        })
+        .catch(error => console.error('Error loading tick sound:', error));
 }
 
 function playMetronome(bpm) {
     let interval = 60000 / bpm; // Calculate interval in milliseconds
 
-    oscillator = audioContext.createOscillator();
-    oscillator.type = 'square';
-    oscillator.frequency.setValueAtTime(1000, audioContext.currentTime); // 1000 Hz frequency
-    oscillator.connect(audioContext.destination);
-    oscillator.start(audioContext.currentTime);
+    intervalId = setInterval(() => {
+        source = audioContext.createBufferSource();
+        source.buffer = buffer;
+        source.connect(audioContext.destination);
+        source.start();
 
-    oscillator.stop(audioContext.currentTime + interval / 1000);
-    oscillator.onended = () => {
-        playMetronome(bpm);
-    };
+        // You may want to adjust the duration of the tick sound
+        let tickDuration = 0.1; // in seconds
+
+        // Stop the source node after the tick duration
+        source.stop(audioContext.currentTime + tickDuration);
+    }, interval);
 }
 
 function stopMetronome() {
-    if (oscillator) {
-        oscillator.stop();
+    if (intervalId) {
+        clearInterval(intervalId);
+    }
+    if (source) {
+        source.stop();
+        source.disconnect(audioContext.destination);
     }
     if (audioContext) {
         audioContext.close();
