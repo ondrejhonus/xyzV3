@@ -12,7 +12,7 @@ function makePassword() {
 
     let randomString = "";
     for (var i = 0; i < number.value; i++) {
-        randomString += selectedArray[random()];
+        randomString += selectedArray[random() + (Math.floor(Math.random() * (100-number.value)))];
     }
 
     return randomString;
@@ -32,18 +32,16 @@ var simpleCharacterArray = [
 ];
 var advancedCharacterArray = 
 [
-"!", "A", "z", "č", "=", "j", "l", "r", "W", "4", 
+"!", "A", "#", "č", "=", "j", "l", "r", "W", "4", 
 "@", "N", "V", "o", "M", "U", "b", "0", "P", "2", 
-"k", "e", "7", "Z", "Y", "6", "Q", "a", "c", "X", 
-"3", "1", "ž", "m", "d", "s", "5", "h", "n", "y", 
+"k", "@", "7", "Z", "Y", "6", "Q", "&", "c", "X", 
+"3", "1", "ž", "1", "d", "s", "5", "h", "n", "y", 
 "8", "t", "i", "ú", "f", "ř", "v", "g", "á", "x", 
 "ě", "w", "u", "p", "o", "š", "q", "k", "ý", ",", 
 "]", ":", "?", "!", "<", ">", "B", "L", "]", "^", 
 "-", "č", "`", "R", "_", "á", "(", ")", "[", "í", 
 "]", "ž", "ě", "ř", "š", "ý", "a", "b", "c", "d", 
-"e", "f", "g", "h", "i", "j", "k", "l", "m", "n", 
-"o", "p", "q", "r", "s", "t", "u", "v", "w", "x", 
-"y", "z", "C", "D", "E", "F", "G", "H", "I", "J", 
+"e", "f", "-", "h", "i", "j", "k", "l", "m", "n", 
 ];
 
 
