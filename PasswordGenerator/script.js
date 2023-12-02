@@ -18,7 +18,7 @@ function makePassword() {
     return randomString;
 }
 
-var simpleCharacterArray = [
+const simpleCharacterArray = [
     'i', 'x', '5', 'r', 'h', '2', 'U', 'j', '9', 'o', 
     'W', 't', '4', '3', 'M', 'f', '8', 'k', 'c', 'e', 
     '0', 'q', 'z', 'A', 'a', 's', '1', 'B', 'l', '5', 
@@ -30,7 +30,7 @@ var simpleCharacterArray = [
     'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 
     'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 
 ];
-var advancedCharacterArray = 
+const advancedCharacterArray = 
 [
 "!", "A", "#", "č", "=", "j", "l", "r", "W", "4", 
 "@", "N", "V", "o", "M", "U", "b", "0", "P", "2", 
