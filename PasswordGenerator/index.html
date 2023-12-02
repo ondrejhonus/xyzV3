@@ -16,8 +16,7 @@
   <link rel="stylesheet" href="../style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
   <link rel="icon" href="images/logo.png">
-  <script src="../script.js"></script>
-  <script src="script.js"></script>
+
 </head>
 
 <body class="bg-dark animate__fadeIn animate__animated">
@@ -41,9 +40,6 @@
                 <a class="nav-link active" href="../Projects/">Projects</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" href="../PasswordGenerator/">Password Generator</a>
-              </li>
-              <li class="nav-item">
                 <a class="nav-link active" href="https://games.ondrejhonus.xyz">Games</a>
               </li>
               <li class="nav-item">
@@ -64,21 +60,24 @@
     </nav>
   </header>
   <main>
-    <h1>Metronome</h1>
-    <label for="bpmInput"></label>
-    <p></p>
-    <input type="number" id="bpmInput" placeholder="Enter BPM" min="1" step="1" required>
-    <p></p>
-    <button onclick="startMetronome()">Start Metronome</button>
-    <p></p>
-    <button onclick="stopMetronome()">Stop Metronome</button>
-    </div>
+    <h1>Password Generator</h1>
+    <form class="passwordLength">
+        <h5>Choose password lenght:</h3>
+                <input type="range" name="amountRange" min="0" max="100" value="0" oninput="this.form.amountInput.value=this.value" class="InputRange"/>
+                <br>
+                <input type="number" name="amountInput" min="0" max="100" value="0" oninput="this.form.amountRange.value=this.value" class="InputNumber"/>
+    </form>
+    <button class="generate">Generate</button>
+    <h6>Generated Password: </h6>
+    <h6 id="resultDisplay" class="resultDisplay"></h6>
   </main>
   <footer>
     <p class="text-white">&copy; 2023 - Ondřej Honus</p>
   </footer>
   <script src="../js/bootstrap.min.js"></script>
   </script>
+  <script src="../script.js"></script>
+<script src="script.js"></script>
 </body>
 
 </html>
