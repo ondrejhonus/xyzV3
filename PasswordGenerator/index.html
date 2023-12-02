@@ -63,10 +63,16 @@
     <h1>Password Generator</h1>
     <form class="passwordLength">
         <h5>Choose password lenght:</h3>
-                <input type="range" name="amountRange" min="0" max="100" value="0" oninput="this.form.amountInput.value=this.value" class="InputRange"/>
+                <input type="range" name="amountRange" min="0" max="100" value="20" oninput="this.form.amountInput.value=this.value" class="InputRange"/>
                 <br>
-                <input type="number" name="amountInput" min="0" max="100" value="0" oninput="this.form.amountRange.value=this.value" class="InputNumber"/>
+                <input type="number" name="amountInput" min="0" max="100" value="20" oninput="this.form.amountRange.value=this.value" class="InputNumber"/>
     </form>
+    <label>
+        ASCII
+        <input type="checkbox" id="advanced" name="advanced" checked>
+        <span></span>
+    </label>
+    <br>
     <button class="generate">Generate</button>
     <h6>Generated Password: </h6>
     <h6 id="resultDisplay" class="resultDisplay"></h6>

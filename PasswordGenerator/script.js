@@ -1,44 +1,59 @@
 var generator = document.querySelector(".generate");
 var number = document.querySelector('.InputRange');
 var resultDisplay = document.getElementById('resultDisplay');
+var advancedCheckbox = document.getElementById('advanced');
 
+function makePassword() {
+    var selectedArray = advancedCheckbox.checked ? advancedCharacterArray : simpleCharacterArray;
 
-function makePassword(){
-    // 92 ASCII characters
-    const array = [
-        "!", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", 
-        "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ":", ";", "<", "=", ">", "?", 
-        "@", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", 
-        "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "[", "]", "^", "_", 
-        "`", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", 
-        "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "{", "|", "}", "~"
-      ];
-function random() {
-    return Math.floor(Math.random() * number.value);
-}
-var characterArray = [
-    "!", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", 
-    "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ":", ";", "<", "=", ">", "?", 
-    "@", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", 
-    "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "[", "]", "^", "_", 
-    "`", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", 
-    "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "{", "|", "}", "~"
-  ];
+    function random() {
+        return Math.floor(Math.random() * number.value);
+    }
 
+    let randomString = "";
+    for (var i = 0; i < number.value; i++) {
+        randomString += selectedArray[random()];
+    }
 
-let randomString = "";
-for ( var i = 0; i < number.value; i++) {
-    randomString += characterArray[ random() ];
-
-};
-
-return randomString;
+    return randomString;
 }
 
+var simpleCharacterArray = [
+    'i', 'x', '5', 'r', 'h', '2', 'U', 'j', '9', 'o', 
+    'W', 't', '4', '3', 'M', 'f', '8', 'k', 'c', 'e', 
+    '0', 'q', 'z', 'A', 'a', 's', '1', 'B', 'l', '5', 
+    'v', '6', 'g', 'd', 'O', 'n', '2', 'N', 'p', 'T', 
+    'u', 'w', '7', 'b', '7', 'V', 'R', 'm', 'Z', 'L', 
+    'X', 'K', 'P', 'C', 'S', 'E', 'y', '3', 'Y', '4', 
+    'Q', 'G', '6', 'D', '8', '5', 'F', 'H', '0', 'a', 
+    'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 
+    'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 
+    'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 
+];
+var advancedCharacterArray = 
+[
+"!", "A", "z", "č", "=", "j", "l", "r", "W", "4", 
+"@", "N", "V", "o", "M", "U", "b", "0", "P", "2", 
+"k", "e", "7", "Z", "Y", "6", "Q", "a", "c", "X", 
+"3", "1", "ž", "m", "d", "s", "5", "h", "n", "y", 
+"8", "t", "i", "ú", "f", "ř", "v", "g", "á", "x", 
+"ě", "w", "u", "p", "o", "š", "q", "k", "ý", ",", 
+"]", ":", "?", "!", "<", ">", "B", "L", "]", "^", 
+"-", "č", "`", "R", "_", "á", "(", ")", "[", "í", 
+"]", "ž", "ě", "ř", "š", "ý", "a", "b", "c", "d", 
+"e", "f", "g", "h", "i", "j", "k", "l", "m", "n", 
+"o", "p", "q", "r", "s", "t", "u", "v", "w", "x", 
+"y", "z", "C", "D", "E", "F", "G", "H", "I", "J", 
+];
 
-generator.addEventListener('click', function(){
+
+generator.addEventListener('click', function () {
     var output = makePassword();
-    console.log(output)
-    resultDisplay.innerText = output;
-    resultDisplay.style.backgroundColor = "white";
+    if (output.length > 0) {
+        resultDisplay.innerText = output;
+        resultDisplay.style.backgroundColor = "white";
+    } else {
+        resultDisplay.innerText = "Why do you hate yourself?";
+        resultDisplay.style.backgroundColor = "white";
+    }
 });
